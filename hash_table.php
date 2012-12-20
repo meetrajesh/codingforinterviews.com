@@ -58,7 +58,7 @@ class HashTable {
 
 	private function _double_table_size() {
 		$old_size = $this->_size; // backup old size
-		$this->_size *= 2; // double the current tabel size
+		$this->_size *= 2; // double the current table size
 		$data = array(); // new array
 		$collisions = array(); // to be re-added later
 
