@@ -19,28 +19,36 @@ function merge_sort(array $arr) {
 function merge_sorted_arrays() {
 
 	$sorted_result = array_reduce(func_get_args(), function($a, $b) {
-			$result = array();
-			$i = $j = 0;
-			while ($i < count($a) || $j < count($b)) {
 
-				if (!isset($a[$i])) {
-					$result[] = $b[$j];
+			$result = array();
+			$i = $j = $k = 0;
+			$len_a = count($a);
+			$len_b = count($b);
+
+			while ($i < $len_a || $j < $len_b) {
+
+				if ($i == $len_a) {
+					$result[$k] = $b[$j];
 					$j++;
-				} elseif (!isset($b[$j])) {
-					$result[] = $a[$i];
+				} elseif ($j == $len_b) {
+					$result[$k] = $a[$i];
 					$i++;
-				} elseif ($a[$i] < $b[$j]) {
-					$result[] = $a[$i];
+				} elseif ($a[$i] <= $b[$j]) {
+					$result[$k] = $a[$i];
 					$i++;
 				} elseif ($a[$i] > $b[$j]) {
-					$result[] = $b[$j];
+					$result[$k] = $b[$j];
 					$j++;
 				} else {
-					$result[] = $a[$i];
-					$result[] = $b[$j];
+					$result[$k] = $a[$i];
+					$result[$k] = $b[$j];
 					$i++; $j++;
 				}
+
+				$k++;
+
 			}
+
 			return $result;
 
 		}, array());
@@ -50,6 +58,10 @@ function merge_sorted_arrays() {
 }
 
 // unit test
+
+// var_dump(merge_sorted_arrays(array(1,2,4), array(3)));
+// exit;
+
 foreach (range(1,1000) as $i) {
 	$question[] = mt_rand(0, 1000);
 }
