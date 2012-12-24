@@ -6,6 +6,19 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 3 - 24-Dec-2012 - merge_sort.php
+--------------------
+
+Write a function that merges an array of already sorted arrays, producing one
+large, still sorted array. For example, your input might be:
+
+[[0, 5, 8, 9], [1, 2, 7], [10]]
+
+And you should return:
+
+[0, 1, 2, 5, 7, 8, 9, 10]
+
+
 Week 2 - 17-Dec-2012 - check_binary_search_tree.php
 --------------
 
