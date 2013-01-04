@@ -6,6 +6,17 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 4 - 3-Jan-2013 - linked_list.php
+--------------------
+
+Implement a simple singly-linked list data structure in your favorite language.
+
+Then, implement all the following linked list interview questions:
+
+    1. Write a function to remove a list's 3rd from last element. Challenge: can you do it in a single list traversal?
+    2. Write a function to remove all duplicates from a linked list. Challenge: can you do it without storing any extra data?
+    3. Write a function to detect a loop in a linked list.
+
 Week 3 - 24-Dec-2012 - merge_sort.php
 --------------------
 
