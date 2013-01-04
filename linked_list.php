@@ -1,8 +1,17 @@
 <?php
 
+class Node {
+	public $key;
+	public $next;
+	public function __construct($key, $next=null) {
+		$this->key = $key;
+		$this->next = $next;
+	}
+}
+
 class LList {
 	public $head;
-	public function __construct($head) {
+	public function __construct(Node $head) {
 		$this->head = $head;
 	}
 	public function add(Node $n) {
@@ -48,6 +57,18 @@ class LList {
 			}
 		}
 	}
+	public function remove_duplicates_no_buffer() {
+		$prev = null;
+		for ($a=$this->head, $i=0; $a != null; $a = $a->next, $i++) {
+			for ($b=$this->head, $j=0; $j < $i; $b = $b->next, $j++) {
+				if ($a->key == $b->key) {
+					$prev->next = $a->next;
+					break;
+				}
+			}
+			$prev = $a;
+		}
+	}
 	public function has_loop() {
 		$visited = array();
 		for ($a=$this->head; $a != null; $a = $a->next) {
@@ -62,32 +83,34 @@ class LList {
 		
 }
 
-class Node {
-	public $key;
-	public $next;
-	public function __construct($key, $next=null) {
-		$this->key = $key;
-		$this->next = $next;
-	}
-}
-
+// unit tests
 $a = new Node(12,
-			  new Node(24,
-					   new Node(35,
+			  new Node(12,
+					   new Node(24,
 								new Node(35,
 										 new Node(35,
-										 new Node(82,
-												  new Node(82
-														   )))))));
+												  new Node(35,
+														   new Node(82,
+																	new Node(82
+																			 ))))))));
 
+
+// init list
 $l = new LList($a);
-$l->print_list();
-echo "\n";
-//$l->remove_3rd_last_element();
-//$l->print_list();
-//var_dump($l->has_loop());
-//$a->next = $a;
-//var_dump($l->has_loop());
+echo $l->print_list() . "\n";
 
-$l->remove_duplicates();
-$l->print_list();
+// remove 3rd last element
+$l->remove_3rd_last_element();
+echo $l->print_list() . "\n";
+
+// check for loops
+echo var_dump($l->has_loop()) . "\n";
+
+// remove duplicates
+$l->remove_duplicates_no_buffer();
+echo $l->print_list() . "\n";
+
+// check for loops
+$a->next = $a;
+var_dump($l->has_loop());
+
