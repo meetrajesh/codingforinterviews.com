@@ -85,14 +85,14 @@ class LList {
 
 // unit tests
 $a = new Node(12,
-			  new Node(12,
-					   new Node(24,
-								new Node(35,
-										 new Node(35,
-												  new Node(35,
-														   new Node(82,
-																	new Node(82
-																			 ))))))));
+		new Node(12,
+			new Node(24,
+				new Node(35,
+					new Node(35,
+						new Node(35,
+							new Node(82,
+								new Node(82
+))))))));
 
 
 // init list
