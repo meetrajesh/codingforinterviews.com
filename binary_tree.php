@@ -45,7 +45,6 @@ class Node {
 	}
 
 	public function lowest_common_ancestor($n1, $n2) {
-
 		$root = $this;
 		$unvisit = function() use ($root) {
 			// mark all nodes as un-visited
@@ -55,10 +54,9 @@ class Node {
 		};
 
 		$ret = $this->lca_postorder(function($node) use ($unvisit, $n1, $n2) {
-
 				// unvisit ALL the nodes in the whole tree
 				$unvisit();
-					
+
 				// mark all child nodes of this node as visited
 				$node->postorder(function($iNode) {
 					$iNode->visited = true;
@@ -71,11 +69,9 @@ class Node {
 				if ($n1->visited && $n2->visited) {
 					return $node->value;
 				}
-
 			});
 
 		return $ret;
-
 	}
 
 }
