@@ -6,6 +6,16 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 5 - 13-Jan-2013 - binary_tree.php
+--------------------
+
+For this week, complete these tasks:
+
+1. Implement a simple binary (non-search) tree node data structure in your favorite programming language and write the following methods: (1) print nodes pre-order, (2) print nodes in-order, (3) print nodes post-order.
+2. Write a function that, given two nodes and a tree root, finds the two nodes' lowest common ancestor. That is, the function should find the ancestor that both nodes share that is furthest away from the root.
+3. Start out trying #3 allowing each node to have a pointer to its parent. Challenge: can you do it without parent pointers? What would the time and space complexities be for your implementations?
+
+
 Week 4 - 3-Jan-2013 - linked_list.php
 --------------------
 
