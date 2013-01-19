@@ -44,6 +44,7 @@ class Node {
 		echo $this->value . "\n";
 	}
 
+	// without parent pointers
 	public function lowest_common_ancestor($n1, $n2) {
 		$root = $this;
 		$unvisit = function() use ($root) {
@@ -62,8 +63,8 @@ class Node {
 					$iNode->visited = true;
 				});
 
-				// unvisit the root node
-				$node->visited = false;
+				// unvisit the root node (depends on definition of "ancestor" node: is each node its own ancestor? if not, uncomment next line)
+				// $node->visited = false;
 
 				// check if two passed in nodes have been visited
 				if ($n1->visited && $n2->visited) {
@@ -73,12 +74,6 @@ class Node {
 
 		return $ret;
 	}
-
-}
-
-function lowest_common_ancestor($root, $n1, $n2) {
-	// without no parent pointers
-
 
 }
 
