@@ -6,6 +6,21 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 6 - 22-Jan-2013 - trie.php
+--------------------
+
+For this week, complete these tasks:
+
+1. Research different variants of the trie and explain in your own words what to consider when implementing one
+2. Write an auto-completer.
+
+An auto-completer? What does that mean? It's up to you! It could be as simple
+as suggesting a few random word suffixes from the dictionary, or as involved
+as supporting various spelling errors, integrating word frequency
+information, or something evil like suggesting the worst possible yet still
+technically correct suffix.
+
+
 Week 5 - 13-Jan-2013 - binary_tree.php
 --------------------
 
