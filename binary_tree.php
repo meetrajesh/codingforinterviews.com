@@ -1,12 +1,24 @@
 <?php
 
 class Node {
-	public $left;
-	public $right;
+	private $left;
+	private $right;
 	public $value;
 	public $visited = false;
+	protected $parent;
 	public function __construct($value) {
 		$this->value = $value;
+	}
+	public function __set($key, $val) {
+		if ($key == 'left' || $key == 'right') {
+			$this->$key = $val;
+			$this->$key->parent = $this;
+		}
+	}
+	public function __get($key) {
+		if (in_array($key, array('left', 'right', 'parent'))) {
+			return $this->$key;
+		}
 	}
 	public function preorder(closure $visit=null) {
 		$ret = $visit ? $visit($this) : $this->print_node(); // visit node
@@ -29,52 +41,79 @@ class Node {
 		return $ret;
 	}
 
-	public function lca_postorder(closure $visit=null) {
-		if ($this->left && $a = $this->left->postorder($visit)) {
-			return $a;
+	public function find(Node $node) {
+		if ($this->value == $node->value) {
+			return $this;
+		} elseif ($this->left && false !== $found = $this->left->find($node)) {
+			return $found;
+		} elseif ($this->right && false !== $found = $this->right->find($node)) {
+			return $found;
+		} else {
+			return false;
 		}
-		if ($this->right && $b = $this->right->postorder($visit)) {
-			return $b;
-		}
-		$ret = $visit ? $visit($this) : $this->print_node(); // visit node
-		return $ret;
 	}
 
 	public function print_node() {
 		echo $this->value . "\n";
 	}
 
-	// without parent pointers
-	public function lowest_common_ancestor($n1, $n2) {
-		$root = $this;
-		$unvisit = function() use ($root) {
-			// mark all nodes as un-visited
-			$root->postorder(function($node) {
-					$node->visited = false;
-				});
-		};
-
-		$ret = $this->lca_postorder(function($node) use ($unvisit, $n1, $n2) {
-				// unvisit ALL the nodes in the whole tree
-				$unvisit();
-
-				// mark all child nodes of this node as visited
-				$node->postorder(function($iNode) {
-					$iNode->visited = true;
-				});
-
-				// unvisit the root node (depends on definition of "ancestor" node: is each node its own ancestor? if not, uncomment next line)
-				// $node->visited = false;
-
-				// check if two passed in nodes have been visited
-				if ($n1->visited && $n2->visited) {
-					return $node->value;
-				}
+	// with parent pointers
+	public function lowest_common_ancestor_with_parent($n1, $n2) {
+		// mark all nodes as false
+		$this->preorder(function($node) {
+				$node->visited = false;
 			});
 
-		return $ret;
+		while (true) {
+			if (!$n1->visited) {
+				$n1->visited = true;
+			} elseif ($n1->parent) {
+				return $n1;
+			}
+
+			if (!$n2->visited) {
+				$n2->visited = true;
+			} elseif ($n2->parent) {
+				return $n2;
+			}
+
+			if (!$n1->parent && !$n2->parent) {
+				// both n1 and n2 must be equal and must both be the root node
+				// return either n1 or n2 in this case
+				return $n1;
+			}
+
+			$n1 = $n1->parent ? $n1->parent : $n1;
+			$n2 = $n2->parent ? $n2->parent : $n2;
+		}
+
 	}
 
+	// without parent pointers
+	public function lowest_common_ancestor($n1, $n2) {
+		if ($n1->value == $this->value && $this->find($n2)) {
+			return $this;
+		} elseif ($n2->value == $this->value && $this->find($n1)) {
+			return $this;
+		}
+
+		if ($this->left && $this->right) {
+			if ($this->left->find($n1) && $this->right->find($n2)) {
+				return $this;
+			} elseif ($this->right->find($n1) && $this->left->find($n2)) {
+				return $this;
+			}
+		}
+		if ($this->left && false !== $found = $this->left->lowest_common_ancestor($n1, $n2)) {
+			return $found;
+		}
+
+		if ($this->right && false !== $found = $this->right->lowest_common_ancestor($n1, $n2)) {
+			return $found;
+		}
+
+		return false;
+	}
 }
 
 // build the graph
@@ -95,4 +134,4 @@ $root->right->right = new Node(15);
 // echo $root->postorder() . "\n";
 
 // echo $root->lowest_common_ancestor(0, 5);
-var_dump($root->lowest_common_ancestor($root->left->left, $root->left));
+var_dump($root->lowest_common_ancestor_with_parent($root, $root)->value);
