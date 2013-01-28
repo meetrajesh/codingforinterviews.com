@@ -9,8 +9,7 @@ class Trie {
 		$node = $this->root;
 		foreach (str_split($str) as $i => $char) {
 			if (!isset($node->children[$char])) {
-				$prefix = substr($str, 0, $i+1);
-				$node->children[$char] = new TrieNode($prefix);
+				$node->children[$char] = new TrieNode($char, $node);
 			}
 			$node = $node->children[$char];
 		}
@@ -59,7 +58,7 @@ class Trie {
 			$node = array_shift($queue);
 			if (empty($node->children)) {
 				// leaf node
-				$leafs[] = $node->char;
+				$leafs[] = $node->getWord();
 			} else {
 				$queue = array_merge($queue, $node->children);
 			}
@@ -70,10 +69,22 @@ class Trie {
 
 class TrieNode {
 	public $char;
+	public $parent;
 	public $bucket;
 	public $children = array();
-	public function __construct($char=null) {
+	public function __construct($char=null, $parent=null) {
 		$this->char = $char;
+		$this->parent = $parent;
+	}
+	public function getWord() {
+		// traverse the parents until we hit the root node to get the full word
+		$word = '';
+		$node = $this;
+		while ($node->parent) {
+			$word .= $node->char;
+			$node = $node->parent;
+		}
+		return strrev($word);
 	}
 }
 
@@ -92,7 +103,7 @@ $trie->insert_key('i', 11);
 $trie->insert_key('in', 11);
 $trie->insert_key('inn', 11);
 
-var_dump($trie->has_key('to'));
-var_dump($trie->has_key('tramp'));
-var_dump($trie->retrieve_val('ted'));
-var_dump($trie->start_with_prefix('t'));
+// var_dump($trie->has_key('to'));
+// var_dump($trie->has_key('tramp'));
+// var_dump($trie->retrieve_val('ted'));
+print_r($trie->start_with_prefix('t'));
