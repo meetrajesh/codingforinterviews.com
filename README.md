@@ -6,13 +6,37 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 7 - 5-Feb-2013 - tower_of_hanoi_stacks.php
+--------------------
+
+Problem of the week - A Stack of Stack Problems
+
+    1. Research stacks and write about one interesting use case for stacks.
+    2. Write a data structure that provides the operations of the stack—push, pop, and peek
+    3. Write a Towers of Hanoi solver, without using recursion.
+
+In the Towers of Hanoi puzzle, you have three towers of rings—tower 1, tower
+2, and tower 3.
+
+Rings can only be placed on top of rings bigger than them. The goal is to
+transfer the rings from tower 1 (with n rings) to tower 2 (empty) without
+breaking the rule that smaller rings must always only be on top of bigger
+rings.
+
+Write a solver for Towers of Hanoi in your favorite programming language. You
+can choose the form of your solution:
+
+    1. Return a list of the operations that would be required to move from tower 1 to tower 2.
+    2. Graphically show the steps of a solution to move from tower 1 to tower 2.
+
+
 Week 6 - 22-Jan-2013 - trie.php
 --------------------
 
 For this week, complete these tasks:
 
-1. Research different variants of the trie and explain in your own words what to consider when implementing one
-2. Write an auto-completer.
+    1. Research different variants of the trie and explain in your own words what to consider when implementing one
+    2. Write an auto-completer.
 
 An auto-completer? What does that mean? It's up to you! It could be as simple
 as suggesting a few random word suffixes from the dictionary, or as involved
@@ -26,9 +50,9 @@ Week 5 - 13-Jan-2013 - binary_tree.php
 
 For this week, complete these tasks:
 
-1. Implement a simple binary (non-search) tree node data structure in your favorite programming language and write the following methods: (1) print nodes pre-order, (2) print nodes in-order, (3) print nodes post-order.
-2. Write a function that, given two nodes and a tree root, finds the two nodes' lowest common ancestor. That is, the function should find the ancestor that both nodes share that is furthest away from the root.
-3. Start out trying #2 allowing each node to have a pointer to its parent. Challenge: can you do it without parent pointers? What would the time and space complexities be for your implementations?
+    1. Implement a simple binary (non-search) tree node data structure in your favorite programming language and write the following methods: (1) print nodes pre-order, (2) print nodes in-order, (3) print nodes post-order.
+    2. Write a function that, given two nodes and a tree root, finds the two nodes' lowest common ancestor. That is, the function should find the ancestor that both nodes share that is furthest away from the root.
+    3. Start out trying #2 allowing each node to have a pointer to its parent. Challenge: can you do it without parent pointers? What would the time and space complexities be for your implementations?
 
 
 Week 4 - 3-Jan-2013 - linked_list.php
