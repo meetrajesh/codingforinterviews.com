@@ -6,6 +6,21 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 8 - 21-Feb-2013 - binary_search.php and singleton.php
+--------------------
+
+1. Write a simple singleton class in your favorite programming language with an example usage.
+2. Solve the Sorted array binary search problem:
+
+    Given a sorted array of integers array and an integer key, return the
+    index of the first instance of key in the array. If key is not present in
+    array, you should return -1.
+
+    For example, given the array [-10, -2, 1, 5, 5, 8, 20] and key 5, you
+    should return the index 3.
+
+    Your solution should be a binary search, that is, it should run in O(log n) time.
+
 Week 7 - 5-Feb-2013 - tower_of_hanoi_stacks.php
 --------------------
 
