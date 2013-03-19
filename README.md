@@ -6,6 +6,22 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 9 - 19-Mar-2013 - quicksort.php
+--------------------
+
+1. Write an answer to the common interview question: what makes quicksort different from merge sort?
+
+Merge sort - merges sorted arrays recursively; requires extra storage space
+Quicksort - partitions unsorted arrays recursively; sorts in-place
+
+2. Implement recursive quicksort (a) choosing the leftmost element as a
+pivot, (b) choosing the middle element as a pivot, and (c) choosing a random
+element as a pivot. Don't worry about storage.
+
+3. (Bonus) Measure how many comparisons your quicksorts do on different
+arrays: already sorted, all the same element, randomized.
+
+
 Week 8 - 21-Feb-2013 - binary_search.php and singleton.php
 --------------------
 
