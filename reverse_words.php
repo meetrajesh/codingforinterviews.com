@@ -1,7 +1,7 @@
 <?php
 
 $sols = array('in' => array('', 'X', 'X YZ', 'because I naughty naughty', 'The quick brown fox jumps over the lazy dogs.', 'Coding for Interviews contains too many gifs.'),
-			  'out' => array('', 'X', 'YZ X', 'naughty naughty I because', 'dogs. lazy the over jumps fox brown quick The', 'gifs. many too contains Interviews for Coding'));
+		'out' => array('', 'X', 'YZ X', 'naughty naughty I because', 'dogs. lazy the over jumps fox brown quick The', 'gifs. many too contains Interviews for Coding'));
 
 foreach ($sols['in'] as $i => $sentence) {
 	if ($sentence) {
