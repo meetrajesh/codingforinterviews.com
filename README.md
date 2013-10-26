@@ -6,6 +6,16 @@ Solutions to the weekly coding problems on codingforinterviews.com
 Problems
 ========
 
+Week 11 - 25-Oct-2013 - spiral_grid.php
+--------------------
+
+Write a function that accepts four arguments:
+
+    The first two arguments are the size of the grid (h x w), filled with ascending integers from left to right, top to bottom, starting from 1.
+    The next two arguments are is the starting positions, the row (r) and column (c).
+
+Return an array of integers obtained by spiraling outward anti-clockwise from the r and c, starting upward.
+
 Week 10 - 12-Apr-2013 - reverse_words.php
 --------------------
 
